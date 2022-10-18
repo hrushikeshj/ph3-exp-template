@@ -26,17 +26,15 @@ jobs:
         npm run build-exp
         ls
         cd ../
-        ls
-        git config --local user.email "admin@vlabs.ac.in"
-        git config --local user.name "vleadadmin"
-        git checkout --orphan gh-pages
-        git reset
-        git add build/* -f
-        git mv build/* ./ -f
-        git commit -m "https://virtual-labs.github.io/${{ github.repository }} click on the link to test your code."
-    - uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        force: true
-        branch: gh-pages
+ 
+    - name: Push gh-pages brach
+      run: |
+        git config --global user.email "hrushi2002j@gmail.com"
+        git config --global user.name "hrushikeshj"
+        git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+        echo $(date) > ./build/ver.txt
+        npm i gh-pages --save-dev
+        npx gh-pages -d build
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
  # Reference : https://github.com/marketplace/actions/github-push
