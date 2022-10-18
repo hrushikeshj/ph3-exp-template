@@ -7,6 +7,8 @@ on:
 # mentioning which branch should be used to build the experimnet
     branches: 
       - testing
+  workflow_dispatch:
+  
 jobs:
   build:
     runs-on: ubuntu-latest
