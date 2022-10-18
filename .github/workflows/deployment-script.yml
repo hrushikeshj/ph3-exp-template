@@ -24,7 +24,9 @@ jobs:
         cd ph3-lab-mgmt
         npm install
         npm run build-exp
+        ls
         cd ../
+        ls
         git config --local user.email "admin@vlabs.ac.in"
         git config --local user.name "vleadadmin"
         git checkout --orphan gh-pages
@@ -34,7 +36,7 @@ jobs:
         git commit -m "https://virtual-labs.github.io/${{ github.repository }} click on the link to test your code."
     - uses: ad-m/github-push-action@master
       with:
-        github_token: ${{ secrets.ORG_OWNER_GITHUB_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         force: true
         branch: gh-pages
  # Reference : https://github.com/marketplace/actions/github-push
